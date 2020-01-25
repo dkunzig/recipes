@@ -8,9 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net;
-using System.Net.Mail;
-
+using EASendMail;
 namespace Recipes
 
 {
@@ -174,80 +172,47 @@ namespace Recipes
                 MessageBox.Show("You need to enter an eMail address below", "Improper eMail address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 return;
             }
-             // Replace sender@example.com with your "From" address. 
-             // This address must be verified with Amazon SES.
-             String FROM = "donkunzig@gmail.com";
-             String FROMNAME = "Don Kunzig";
+            try
+            {
+                SmtpMail oMail = new SmtpMail("TryIt");
 
-            // Replace recipient@example.com with a "To" address. If your account 
-            // is still in the sandbox, this address must be verified.
-            String TO = emailTextBox.Text;
+                // Your gmail email address
+                oMail.From = "donkunzig@gmail.com";
+                // Set recipient email address
+                oMail.To = "donkunzig@gmail.com";
 
-                // Replace smtp_username with your Amazon SES SMTP user name.
-                String SMTP_USERNAME = "AKIA2QLCKE7BMRJCKAGF";
+                // Set email subject
+                oMail.Subject = "test email from gmail account";
+                // Set email body
+                oMail.TextBody = "this is a test email sent from c# project with gmail.";
 
-                // Replace smtp_password with your Amazon SES SMTP user name.
-                String SMTP_PASSWORD = "BJwKED7vYzHWLJCHto2qNSEJn7VFWqg7pB17Ky8V9nY5?";
+                // Gmail SMTP server address
+                SmtpServer oServer = new SmtpServer("smtp.gmail.com");
+                // Gmail user authentication
+                // For example: your email is "gmailid@gmail.com", then the user should be the same
+                oServer.User = "donkunzig@gmail.com";
+                oServer.Password = "64533456Aa?";
 
-                // (Optional) the name of a configuration set to use for this message.
-                // If you comment out this line, you also need to remove or comment out
-                // the "X-SES-CONFIGURATION-SET" header below.
-                //String CONFIGSET = "ConfigSet";
+                // Set 587 port, if you want to use 25 port, please change 587 5o 25
+                oServer.Port = 587;
 
-                // If you're using Amazon SES in a region other than US West (Oregon), 
-                // replace email-smtp.us-west-2.amazonaws.com with the Amazon SES SMTP  
-                // endpoint in the appropriate AWS Region.
-                String HOST = "email-smtp.us-east-1.amazonaws.com";
+                // detect SSL/TLS automatically
+                oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
 
-                // The port you will connect to on the Amazon SES SMTP endpoint. We
-                // are choosing port 587 because we will use STARTTLS to encrypt
-                // the connection.
-                int PORT = 587;
+                //Console.WriteLine("start to send email over SSL ...");
 
-                // The subject line of the email
-                String SUBJECT =
-                    "Recipe for " + RecipeNameTextBox.Text;
+                SmtpClient oSmtp = new SmtpClient();
+                oSmtp.SendMail(oServer, oMail);
 
-                // The body of the email
-                String BODY = 
-                    "Recipe name : " + RecipeNameTextBox.Text + 
-                    "\n\n\n" + InstructionsTextBox.Text + "\n\n\n" +  
-                     IngredientsTextBox.Text;
-
-                // Create and build a new MailMessage object
-                MailMessage message = new MailMessage();
-                message.IsBodyHtml = false;
-                message.From = new MailAddress(FROM, FROMNAME);
-                message.To.Add(new MailAddress(TO));
-                message.Subject = SUBJECT;
-                message.Body = BODY;
-                // Comment or delete the next line if you are not using a configuration set
-                //message.Headers.Add("X-SES-CONFIGURATION-SET", CONFIGSET);
-
-                using (var client = new System.Net.Mail.SmtpClient(HOST, PORT))
-                {
-                    // Pass SMTP credentials
-                    client.Credentials =
-                        new NetworkCredential(SMTP_USERNAME, SMTP_PASSWORD);
-
-                    // Enable SSL encryption
-                    client.EnableSsl = true;
-
-                    // Try to send the message. Show status in console.
-                    try
-                    {
-                        //Console.WriteLine("Attempting to send email...");
-                        client.Send(message);
-                        MessageBox.Show("eMail Message Sent", "eMail Successful",MessageBoxButtons.OK);
-                    //Console.WriteLine("Email sent!");
-                }
-                    catch (Exception ex)
-                    {
-                    MessageBox.Show("message failed", "message failed", MessageBoxButtons.OK);
-                        //Console.WriteLine("Error message: " + ex.Message);
-                    }
-                }
-            
+                MessageBox.Show("email was sent successfully!");
+            }
+            catch (Exception ep)
+            {
+                MessageBox.Show(ep.Message,"email was sent successfully!");
+                Console.WriteLine(ep.Message);
+            }
         }
+
     }
-}
+    }
+
