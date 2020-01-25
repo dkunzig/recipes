@@ -169,15 +169,19 @@ namespace Recipes
 
         private void eMailButton_Click(object sender, EventArgs e)
         {
-            
-                // Replace sender@example.com with your "From" address. 
-                // This address must be verified with Amazon SES.
-                String FROM = "donkunzig@gmail.com";
-                String FROMNAME = "Don Kunzig";
+            if (!emailTextBox.Text.Contains("@"))
+            {
+                MessageBox.Show("You need to enter an eMail address below", "Improper eMail address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                return;
+            }
+             // Replace sender@example.com with your "From" address. 
+             // This address must be verified with Amazon SES.
+             String FROM = "donkunzig@gmail.com";
+             String FROMNAME = "Don Kunzig";
 
-                // Replace recipient@example.com with a "To" address. If your account 
-                // is still in the sandbox, this address must be verified.
-                String TO = "debkunzig@verizon.net";
+            // Replace recipient@example.com with a "To" address. If your account 
+            // is still in the sandbox, this address must be verified.
+            String TO = emailTextBox.Text;
 
                 // Replace smtp_username with your Amazon SES SMTP user name.
                 String SMTP_USERNAME = "AKIA2QLCKE7BMRJCKAGF";
@@ -234,8 +238,9 @@ namespace Recipes
                     {
                         //Console.WriteLine("Attempting to send email...");
                         client.Send(message);
-                        //Console.WriteLine("Email sent!");
-                    }
+                        MessageBox.Show("eMail Message Sent", "eMail Successful",MessageBoxButtons.OK);
+                    //Console.WriteLine("Email sent!");
+                }
                     catch (Exception ex)
                     {
                     MessageBox.Show("message failed", "message failed", MessageBoxButtons.OK);

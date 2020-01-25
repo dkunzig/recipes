@@ -42,13 +42,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.eMailButton = new System.Windows.Forms.Button();
-            this.textButton = new System.Windows.Forms.Button();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // IngredientsTextBox
             // 
-            this.IngredientsTextBox.Location = new System.Drawing.Point(1492, 202);
+            this.IngredientsTextBox.Location = new System.Drawing.Point(1304, 170);
             this.IngredientsTextBox.Multiline = true;
             this.IngredientsTextBox.Name = "IngredientsTextBox";
             this.IngredientsTextBox.Size = new System.Drawing.Size(655, 918);
@@ -90,7 +90,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1706, 150);
+            this.label3.Location = new System.Drawing.Point(1543, 132);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(118, 25);
             this.label3.TabIndex = 5;
@@ -98,7 +98,7 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(2191, 514);
+            this.SaveButton.Location = new System.Drawing.Point(2107, 491);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(198, 53);
             this.SaveButton.TabIndex = 6;
@@ -108,7 +108,7 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(2191, 599);
+            this.CancelButton.Location = new System.Drawing.Point(2107, 586);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(198, 53);
             this.CancelButton.TabIndex = 7;
@@ -118,7 +118,7 @@
             // 
             // PrintButton
             // 
-            this.PrintButton.Location = new System.Drawing.Point(2191, 678);
+            this.PrintButton.Location = new System.Drawing.Point(2107, 667);
             this.PrintButton.Name = "PrintButton";
             this.PrintButton.Size = new System.Drawing.Size(198, 53);
             this.PrintButton.TabIndex = 8;
@@ -144,9 +144,14 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textButton);
+            this.groupBox1.Controls.Add(this.emailTextBox);
             this.groupBox1.Controls.Add(this.eMailButton);
+            this.groupBox1.Controls.Add(this.SaveButton);
+            this.groupBox1.Controls.Add(this.CancelButton);
+            this.groupBox1.Controls.Add(this.PrintButton);
             this.groupBox1.Controls.Add(this.InstructionsTextBox);
+            this.groupBox1.Controls.Add(this.IngredientsTextBox);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(8, 8);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(2438, 1260);
@@ -155,7 +160,7 @@
             // 
             // eMailButton
             // 
-            this.eMailButton.Location = new System.Drawing.Point(2183, 759);
+            this.eMailButton.Location = new System.Drawing.Point(2107, 758);
             this.eMailButton.Name = "eMailButton";
             this.eMailButton.Size = new System.Drawing.Size(198, 53);
             this.eMailButton.TabIndex = 9;
@@ -163,14 +168,12 @@
             this.eMailButton.UseVisualStyleBackColor = true;
             this.eMailButton.Click += new System.EventHandler(this.eMailButton_Click);
             // 
-            // textButton
+            // emailTextBox
             // 
-            this.textButton.Location = new System.Drawing.Point(2183, 852);
-            this.textButton.Name = "textButton";
-            this.textButton.Size = new System.Drawing.Size(198, 53);
-            this.textButton.TabIndex = 12;
-            this.textButton.Text = "Text";
-            this.textButton.UseVisualStyleBackColor = true;
+            this.emailTextBox.Location = new System.Drawing.Point(2005, 884);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(410, 31);
+            this.emailTextBox.TabIndex = 10;
             // 
             // RecipeFrm
             // 
@@ -180,14 +183,9 @@
             this.ClientSize = new System.Drawing.Size(2458, 1264);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.CreditToTextBox);
-            this.Controls.Add(this.PrintButton);
-            this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.RecipeNameTextBox);
-            this.Controls.Add(this.IngredientsTextBox);
             this.Controls.Add(this.groupBox1);
             this.Name = "RecipeFrm";
             this.Text = "AddRecipe";
@@ -212,7 +210,7 @@
         private System.Windows.Forms.TextBox CreditToTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button textButton;
         private System.Windows.Forms.Button eMailButton;
+        private System.Windows.Forms.TextBox emailTextBox;
     }
 }
