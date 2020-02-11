@@ -174,17 +174,17 @@ namespace Recipes
             }
             try
             {
-                SmtpMail oMail = new SmtpMail("TryIt");
+                SmtpMail oMail = new SmtpMail("tryit");
 
                 // Your gmail email address
                 oMail.From = "donkunzig@gmail.com";
                 // Set recipient email address
-                oMail.To = "donkunzig@gmail.com";
+                oMail.To = emailTextBox.Text;
 
                 // Set email subject
-                oMail.Subject = "test email from gmail account";
+                oMail.Subject = "Recipe for " + RecipeNameTextBox.Text;
                 // Set email body
-                oMail.TextBody = "this is a test email sent from c# project with gmail.";
+                oMail.TextBody = InstructionsTextBox.Text + "\n\n " + IngredientsTextBox.Text;
 
                 // Gmail SMTP server address
                 SmtpServer oServer = new SmtpServer("smtp.gmail.com");
