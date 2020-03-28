@@ -16,7 +16,7 @@ C:\Recipes\WindowsFormsApp1\obj\Debug\Recipes.RecipeFrm.resources
 C:\Recipes\WindowsFormsApp1\obj\Debug\Recipes.RecipeMainForm.resources
 C:\Recipes\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 C:\Recipes\WindowsFormsApp1\obj\Debug\Recipes.csproj.GenerateResource.Cache
-C:\Recipes\WindowsFormsApp1\obj\Debug\Recipes.csproj.CoreCompileInputs.cache
 C:\Recipes\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Recipes\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Recipes\WindowsFormsApp1\bin\Debug\EASendMail.dll
+C:\recipes\WindowsFormsApp1\obj\Debug\Recipes.csprojResolveAssemblyReference.cache
